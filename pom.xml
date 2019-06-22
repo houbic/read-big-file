@@ -5,9 +5,15 @@
     <groupId>com.houbic</groupId>
     <artifactId>read-big-file</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <name>read-big-file</name>
     <url>http://maven.apache.org</url>
+
+    <!--模块-->
+    <modules>
+        <module>read-file-service</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
