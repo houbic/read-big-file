@@ -12,21 +12,21 @@ public class ReadBigFile {
 
     public static void main(String[] args) throws Exception {
         String fileName = "E:\\test.txt";
-//        long value = 1000_000_000_000_00L;
-//        BufferedWriter bw  = new BufferedWriter(new FileWriter(fileName));
-//        for (int i = 0; i < 200_000_000; i++) {
-//            bw.write(String.valueOf(value));
-//            bw.newLine();
-//            value++;
-//        }
-//        bw.close();
+        long value = 1000_000_000_000_00L;
+        BufferedWriter bw  = new BufferedWriter(new FileWriter(fileName));
+        for (int i = 0; i < 200_000_000; i++) {
+            bw.write(String.valueOf(value));
+            bw.newLine();
+            value++;
+        }
+        bw.close();
 
         long startTime1 = System.currentTimeMillis();
         BufferedReader br = new BufferedReader(new FileReader(fileName));
-        Set<String> set = new HashSet<>(200_000_000);
+//        Set<String> set = new HashSet<>(200_000_000);
         String line;
         while ((line = br.readLine()) != null) {
-            set.add(line);
+//            set.add(line);
         }
         br.close();
         System.out.println(String.format("BufferedReader read file cost time : %s", System.currentTimeMillis() - startTime1));
@@ -40,9 +40,9 @@ public class ReadBigFile {
             @Override
             public void handle(String value) {
                 count.incrementAndGet();
-                if (!set.contains(value)) {
-                    System.out.println("ConcurrentReadFile read file exception:" + value);
-                }
+//                if (!set.contains(value)) {
+//                    System.out.println("ConcurrentReadFile read file exception:" + value);
+//                }
             }
         });
         concurrentReadFile.readFile();
